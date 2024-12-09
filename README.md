@@ -1,5 +1,6 @@
 ### 概要
 - LaravelとVueの組み合わせ勉強用Project
+- WebAPI実装
 
 ### Version
 - PHP：8.3.14
