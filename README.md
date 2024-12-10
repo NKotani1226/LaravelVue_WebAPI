@@ -20,5 +20,10 @@
 - php artisan key:generate
 - npm run dev
 
+### API設定方法
+1. Integrationを設定する
+2. 接続するDBにIntegrationを共有する
+3. envファイルにNotionAPIのIntegrationとDatabaseIDを記載する
+
 ### LINK
 - [環境構築参考](https://qiita.com/hitotch/items/2e816bc1423d00562dc2)
