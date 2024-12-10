@@ -16,7 +16,11 @@ class NotionApiController extends Controller
 
     public function fetchDatabase()
     {
-        return response()->json($this->notionService->getDatabase());
+        $notionData = $this->notionService->getDatabase();
+        $responseJson = response()->json($notionData);
+        $content = $responseJson->content();
+        $result = json_decode( $content, true );
+        return view("notion",["notionData" =>$result["results"]]);
     }
 
     public function addPage(Request $request)
