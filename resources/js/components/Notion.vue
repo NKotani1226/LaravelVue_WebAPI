@@ -1,12 +1,27 @@
 <template>
-  <div id="notion">
-    <h1>NotionCOMPONENT!</h1>
+  <div>
+    <ul>
+      <li v-for="(item, index) in data" :key="index">
+        <a :href="item.url">
+          <p>{{ item["properties"]["名前"]["title"][0]["plain_text"] }}</p>
+        </a>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Notion',
+  props: {
+        data: {
+            type: Array,
+            required: true,
+        },
+    },
+    mounted() {
+        console.log(this.data);
+    },
 };
 </script>
 

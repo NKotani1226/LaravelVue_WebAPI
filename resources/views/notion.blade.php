@@ -21,11 +21,6 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        @foreach ($notionData as $data)
-        <p>
-            {{$data["properties"]["名前"]["title"][0]["plain_text"]}}
-        </p>
-        @endforeach
-        <div id="notion" data-porps="@js($notionData)"></div>
+        <div id="notion" data-props='@json($notionData)'></div>
     </body>
 </html>
