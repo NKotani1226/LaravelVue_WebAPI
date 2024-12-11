@@ -26,5 +26,6 @@
             {{$data["properties"]["名前"]["title"][0]["plain_text"]}}
         </p>
         @endforeach
+        <div id="notion" data-porps="@js($notionData)"></div>
     </body>
 </html>
