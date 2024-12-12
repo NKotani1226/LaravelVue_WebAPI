@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <h1>Hello, Vue.js with Laravel!</h1>
   </div>
 </template>
