@@ -3,7 +3,7 @@
 namespace App\Http\Services;
 
 use GuzzleHttp\Client;
-
+use Illuminate\Support\Facades\Http;
 class NotionService
 {
     protected $client;
@@ -30,12 +30,24 @@ class NotionService
         return $returnData;
     }
 
-    public function addPage($data)
+    public function addPage(array $data)
     {
-        $response = $this->client->post('pages', [
-            'json' => $data,
-        ]);
-        return json_decode($response->getBody(), true);
+        $data = [
+            'parent' => ['database_id' => $this->databaseId], // データベースIDを指定
+            'properties' => $data["properties"], // データベースプロパティ
+        ];
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . env('NOTION_API_SECRET'),
+            'Content-Type' => 'application/json',
+            'Notion-Version' => '2022-06-28', // 最新のNotionバージョンを指定
+        ])->post('https://api.notion.com/v1/pages', $data);
+
+        if ($response->failed()) {
+            throw new \Exception('Failed to add page to Notion: ' . $response->body());
+        }
+
+        return $response->json();
     }
 
     private function makeJsonData($response)
