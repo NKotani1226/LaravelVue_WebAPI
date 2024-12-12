@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 // Notionデータベースから情報を取得する
 Route::get('/notion/database', [NotionApiController::class, 'fetchDatabase']);
+Route::get('/notion/send',[NotionApiController::class,'findPostView']);

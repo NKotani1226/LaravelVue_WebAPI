@@ -28,4 +28,11 @@ class NotionApiController extends Controller
         ];
         return response()->json($this->notionService->addPage($data));
     }
+
+    public function findPostView()
+    {
+        return view("notionsend");
+    }
+
+
 }

@@ -2,9 +2,11 @@ import './bootstrap';
 import { createApp, h } from 'vue';
 import App from './components/App.vue';
 import Notion from './components/Notion.vue';
+import NotionSend from './components/NotionSend.vue';
 
 createApp(App).mount('#app');
 createApp(Notion).mount("#notion");
+createApp(NotionSend).mount("#notionSend");
 
 // コンポーネントのマッピング
 const components = [
