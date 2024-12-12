@@ -26,7 +26,8 @@ class NotionService
     public function getDatabase()
     {
         $response = $this->client->post("databases/{$this->databaseId}/query");
-        return json_decode($response->getBody(), true);
+        $returnData = $this->makeJsonData($response);
+        return $returnData;
     }
 
     public function addPage($data)
@@ -35,5 +36,14 @@ class NotionService
             'json' => $data,
         ]);
         return json_decode($response->getBody(), true);
+    }
+
+    private function makeJsonData($response)
+    {
+        $jsonData = json_decode($response->getBody(), true);
+        $responseJson = response()->json($jsonData);
+        $content = $responseJson->content();
+        $returnData = json_decode( $content, true );
+        return $returnData;
     }
 }
