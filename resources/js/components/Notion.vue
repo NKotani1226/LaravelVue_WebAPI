@@ -3,7 +3,7 @@
     <ul>
       <li v-for="(item, index) in data" :key="index">
         <a :href="item.url">
-          <p>{{ item["properties"]["名前"]["title"][0]["plain_text"] }}</p>
+          <p>{{ item["properties"]["Name"]["title"][0]["plain_text"] }}</p>
         </a>
       </li>
     </ul>
